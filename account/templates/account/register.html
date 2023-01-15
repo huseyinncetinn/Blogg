@@ -1,0 +1,84 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    footer{
+    margin-top: 250px;
+    }
+    .btn1 {
+    background-color: #16213E!important;
+    color: #fff!important;
+    border-radius: 3px;
+}
+</style>
+
+<div class="container mt-3">
+    <h1 class="text-center" style="font-style: italic ;">Üyelik Formu</h1>
+    <div class="col">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if error %}
+
+            <div class="alert alert-danger">
+                {{error}}
+            </div>
+            
+            {% else %}
+            {% endif %}
+            <div class="mb-3">
+               <label for="username" class="form-label">Username</label>
+               <input type="text" class="form-control" name="username" value="{{ username }}">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" name="email" value="{{ email }}" >
+             </div>
+             <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="firstname" class="form-label">Firstname</label>
+                        <input type="text" class="form-control" name="firstname" value="{{ firstname }}">
+                     </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="lastname" class="form-label">Lastname</label>
+                        <input type="text" class="form-control" name="lastname" value="{{ lastname }}">
+                     </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="lastname" class="form-label">Bio</label>
+                        <textarea name="bio" class="form-control" value="{{ bio }}" id="" cols="30" rows="10"></textarea>
+                     </div>
+                </div>
+               
+             </div>
+             
+             
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password">
+                     </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="repassword" class="form-label">Re-Password</label>
+                        <input type="password" class="form-control" name="repassword">
+                     </div>
+                </div>
+            </div>
+            
+             
+
+            <input type="submit" value="Register" class="btn1">
+        </form>
+   
+
+    </div>
+</div>
+
+{% endblock content %}

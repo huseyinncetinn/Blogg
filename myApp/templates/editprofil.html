@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+<div class="container w-25">
+    <form  method="POST" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        {{ profilDuzenle }}
+    <input  type="submit" name="resimdegis" class="btn btn-primary mb-3" value="Profili Düzenle">   
+    </form>
+</div> 
+  
+{% else %}
+{% endif %}    
+
+
+
+
+
+{% endblock content %}

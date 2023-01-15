@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    footer{
+        margin-top: 250px;
+    }
+    img{
+        margin-top: 150px;
+        border-radius: 10px;
+        margin-left: 90px;
+    }
+    .content {
+        margin-top: 130px;
+        margin-right: 100px;
+    }
+ 
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+                <div class="content">
+                        <h2>Hoş Geldiniz,</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt fugit dolorum suscipit nisi voluptate consectetur impedit libero eos sequi ipsum error, vitae incidunt corrupti dicta porro voluptatibus saepe molestiae cum quod modi hic nulla eligendi voluptates. Soluta accusamus qui magni, tempora inventore pariatur officiis vero sequi provident delectus, temporibus autem odio iusto tenetur similique, quam id eum voluptatibus possimus laborum incidunt dolor earum? Minus omnis repellendus incidunt! Libero ipsam ratione vitae laborum aut nemo. Quidem omnis et quaerat sit expedita aliquid id culpa esse rem exercitationem sequi est dolores explicabo, nihil minima eum hic ipsam, maiores tempora soluta at molestias blanditiis iusto. Voluptatum assumenda dolorum doloremque repudiandae accusantium possimus quisquam perspiciatis! Quibusdam voluptatibus dolorem cum itaque sunt, et nemo commodi similique, inventore nostrum, dolor unde accusamus. Assumenda ad veritatis quo sint labore quis accusamus, corporis fugiat in quos consequuntur minus eaque repellat et tempore aut illo omnis perferendis eos aperiam.</p>
+                </div> 
+        </div>
+        <div class="col-6"> 
+                <img src="{% static 'Hüseyin365&365.jpg' %}" alt="">
+        </div>
+    </div>
+</div>
+ 
+ 
+
+{% endblock content %}

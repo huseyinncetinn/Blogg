@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+footer{
+    margin-top: 250px;
+}
+
+</style>
+
+<div class="container">
+    <form method="POST" enctype="multipart/form-data" class="w-50 m-auto border mt-5 p-4">
+        {% csrf_token  %}
+        {{form}}
+        {{form.media}}
+        <input type="submit" value="Post Oluştur" class="btn btn-primary mt-2">
+    </form>
+ </div>
+
+
+{% endblock content %}

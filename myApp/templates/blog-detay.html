@@ -1,0 +1,107 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    footer{
+    margin-top: 250px;
+    }
+    .container1{
+       width:   1000px ;
+       text-align: center;
+       margin-left: 160px;
+    }
+    .a{
+        border-left: 1px solid #16213E ;
+        border-right: 1px solid #16213E ;
+    }
+    .container2{
+       width:   500px ;
+       text-align: center;
+       margin-left: 390px;
+    }
+    .begeniButton button{
+        border: #fff ;
+        background-color: #fff;
+        margin-bottom: 13px;
+    }
+</style>
+
+<div class="container text-center mt-5 a">
+       <div >
+            <a class="d-flex justify-content-center" href="{% url 'profil' profil.slug profil.id %}">
+                <img class="rounded-circle" src="{{ profil.profil_resim.url }}" alt="" width="5%">
+                <h2> {{postdetay.olusturan}} </h2>
+            </a> 
+       </div>
+        <div>
+            <img  width="450px" src="{{postdetay.resim.url}}" alt="">
+        </div>
+        <form action="" method="POST" class="mt-5">
+            {% csrf_token %}
+          <div class="d-flex justify-content-center begeniButton">
+        {% if request.user in postdetay.like.all %}
+        <button style="color: green ;" type="submit" name="begen"><i class="fa-solid fa-thumbs-up"></i></button>
+        {% else %}
+        <button type="submit" name="begen"><i class="fa-solid fa-thumbs-up"></i></button>
+        {% endif %} 
+            <p>{{postdetay.like.all.count}} kişi beğendi</p>
+
+
+
+        {% if request.user in postdetay.dislike.all %}
+        <button style="color: red ;" type="submit" name="begenme"><i class="fa-solid fa-thumbs-down"></i></button>
+        {% else %}
+        <button type="submit" name="begenme"><i class="fa-solid fa-thumbs-down"></i></button>
+        {% endif %}    
+            <p>{{postdetay.dislike.all.count}} kişi beğenmedi </p>
+
+
+
+        {% if request.user in postdetay.retweet.all %}
+        <button style="color: blue;" type="submit" name="paylas"><i class="fa-sharp fa-solid fa-share"></i></button>
+        {% else %}
+        <button type="submit" name="paylas"><i class="fa-sharp fa-solid fa-share"></i></button>
+        {% endif %}    
+            <p>{{postdetay.retweet.all.count}} kişi paylaştı</p>
+
+
+
+          </div> 
+        </form>
+        <div class="mt-3">
+            <h1>
+                {{postdetay.kisaBilgi}}
+            </h1>
+        </div>
+        <div class="container1 mt-3">
+            <p> 
+                {{postdetay.icerik|safe}}
+            </p>
+        </div>
+    {% if user.is_authenticated %}
+    <div class="container2">
+        {% for yorum in yorum %}
+                 <h4> {{yorum.kullanici}} | <small>{{ yorum.yorumTarih }}</small> </h4>
+                 <p> {{ yorum.yorum }} </p>
+        {% endfor %}
+
+        {% load crispy_forms_tags %}
+                <form method = 'POST'>
+                    {% csrf_token %}
+                    {{ form }}
+                    {{form.media}}
+                    <input type="submit" class="btn btn-primary" value="Yorum Ekle">
+                </form>             
+    </div>
+    {% else %}
+    <h3 class="text-center">Yorum yapmak ve yorumları görmek için blog sayfasına <a href="{% url 'register' %}">kayıt</a> olmalısınız.</h3>
+    {% endif %}
+    
+</div>
+
+
+
+{% endblock content %}
+

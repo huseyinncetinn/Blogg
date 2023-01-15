@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+<div class="container">
+    <form action="" method="POST" enctype="multipart/form-data" class="w-50 m-auto border p-4">
+        {% csrf_token %}
+        <label for="">Mevcut Şifre</label>
+        <input type="password" name="eski" class="form-control">
+        <label for="">Yeni Şifre</label>
+        <input type="password" name="yeni1" class="form-control">
+        <label for="">Yeni Şifre Tekrar</label>
+        <input type="password" name="yeni2" class="form-control">
+
+
+        <input type="submit" value="Güncelle" class="button">
+    </form>
+  </div>
+  
+{% else %}
+{% endif %}    
+
+
+
+
+
+{% endblock content %}
